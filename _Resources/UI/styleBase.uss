@@ -1,0 +1,118 @@
+.draggable {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    position: absolute;
+    min-width: 100px;
+    min-height: 200px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.dragging {
+    opacity: 0.5;
+}
+
+.vector-elements {
+    flex-direction: row;
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+.value-field {
+    flex-direction: row;
+    font-size: 18px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    -unity-text-align: middle-left;
+    background-color: rgba(255, 255, 255, 0.75);
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgb(128, 128, 128);
+    border-right-color: rgb(128, 128, 128);
+    border-top-color: rgb(128, 128, 128);
+    border-bottom-color: rgb(128, 128, 128);
+    margin-left: 3px;
+    margin-right: 3px;
+    flex-wrap: wrap;
+}
+
+.value-field .value-field {
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.value-field .unity-label {
+    min-width: auto;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.header-menu {
+    flex-direction: row;
+}
+
+.header-container {
+    flex-direction: row-reverse;
+    margin-top: 8px;
+}
+
+.side-container {
+    max-width: 256px;
+    min-width: 256px;
+    margin-top: 16px;
+}
+
+.unity-button {
+    font-size: 16px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    flex-wrap: wrap;
+    max-width: 128px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.full-container {
+    flex-grow: 1;
+}

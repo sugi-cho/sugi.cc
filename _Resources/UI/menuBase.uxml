@@ -1,0 +1,24 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="styleBase.uss" />
+    <ui:VisualElement name="Container" class="full-container">
+        <ui:VisualElement name="header" class="header-container">
+            <ui:VisualElement class="header-menu" style="justify-content: flex-start; align-items: stretch;">
+                <ui:Button text="setting2&#10;kaigyou" display-tooltip-when-elided="true" />
+                <ui:Button text="setting3" display-tooltip-when-elided="true" />
+                <ui:Button text="setting1" display-tooltip-when-elided="true" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement class="full-container" style="flex-direction: row-reverse;">
+            <ui:VisualElement class="side-container">
+                <ui:ScrollView class="data-field-container" />
+            </ui:VisualElement>
+            <ui:VisualElement name="main-contents" class="full-container" style="background-image: url(&apos;/Assets/sugi.cc/_Resources/Textures/RenderTexture.renderTexture&apos;);">
+                <ui:VisualElement style="justify-content: center; align-items: center;">
+                    <ui:Label text="this is test text" display-tooltip-when-elided="true" style="align-items: auto; flex-grow: 0; visibility: visible; -unity-text-align: upper-center;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="01" class="draggable" />
+                <ui:VisualElement name="02" class="draggable" style="left: 200px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
