@@ -12,7 +12,7 @@
             <ui:VisualElement class="side-container">
                 <ui:ScrollView class="data-field-container" />
             </ui:VisualElement>
-            <ui:VisualElement name="main-contents" class="full-container" style="background-image: url(&apos;/Assets/sugi.cc/_Resources/Textures/RenderTexture.renderTexture&apos;);">
+            <ui:VisualElement name="main-contents" class="full-container" style="background-image: url(&apos;../Textures/RenderTexture.renderTexture&apos;); -unity-background-scale-mode: scale-to-fit;">
                 <ui:VisualElement style="justify-content: center; align-items: center;">
                     <ui:Label text="this is test text" display-tooltip-when-elided="true" style="align-items: auto; flex-grow: 0; visibility: visible; -unity-text-align: upper-center;" />
                 </ui:VisualElement>
