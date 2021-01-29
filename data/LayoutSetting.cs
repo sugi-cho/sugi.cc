@@ -39,12 +39,6 @@ namespace sugi.cc.data
             base.Save();
         }
 
-        [ContextMenu("save as..")]
-        void ContextMenuSaveAs()
-        {
-            base.Save(filePath, data);
-        }
-
 #if UNITY_EDITOR
         [MenuItem("Assets/Create/LoadableSetting/LayoutSetting")]
         public static void Create()
