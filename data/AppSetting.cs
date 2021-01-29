@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using System.Linq;
 using UnityEngine;
-using SFB;
 
 namespace sugi.cc.data
 {
@@ -14,16 +13,20 @@ namespace sugi.cc.data
 
         private string m_FilePath;
 
-        private void Awake()
+        private void OnValidate()
         {
             filePathData.filePaths = loadableSettings.Select(setting => setting.GetNameAndPath()).ToArray();
-            m_FilePath = Path.Combine(Application.streamingAssetsPath, settingFilePath);
+        }
+
+        private void Awake()
+        {
             LoadSettingFilePaths();
             LoadLoadableSettings();
         }
 
         public void LoadSettingFilePaths()
         {
+            m_FilePath = Path.Combine(Application.streamingAssetsPath, settingFilePath);
             if (File.Exists(m_FilePath))
             {
                 var json = File.ReadAllText(m_FilePath);
@@ -37,6 +40,8 @@ namespace sugi.cc.data
 
         public void SaveSettingFilePaths()
         {
+            m_FilePath = Path.Combine(Application.streamingAssetsPath, settingFilePath);
+            filePathData.filePaths = loadableSettings.Select(setting => setting.GetNameAndPath()).ToArray();
             var json = JsonUtility.ToJson(filePathData);
             File.WriteAllText(m_FilePath, json);
         }
@@ -48,6 +53,11 @@ namespace sugi.cc.data
                 loadableSettings[i].Load(filePathData.filePaths[i].filePath);
             }
         }
+
+        [ContextMenu("load setting")]
+        void LoadJson() => LoadSettingFilePaths();
+        [ContextMenu("save setting")]
+        void SaveJson() => SaveSettingFilePaths();
 
         [Serializable]
         public struct FilePathData

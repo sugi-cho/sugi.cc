@@ -24,13 +24,13 @@ namespace sugi.cc.data
             public int prefabIdx;
             public Vector3 position;
             public Quaternion rotation;
-            public Vector3 scale;
+            public Vector3 scale = Vector3.one;
         }
 
         [ContextMenu("load file")]
         void ContextMenuLoad()
         {
-            base.LoadFile();
+            base.Load(filePath);
         }
 
         [ContextMenu("save data")]
@@ -42,7 +42,7 @@ namespace sugi.cc.data
         [ContextMenu("save as..")]
         void ContextMenuSaveAs()
         {
-            base.SaveAs();
+            base.Save(filePath, data);
         }
 
 #if UNITY_EDITOR
