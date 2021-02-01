@@ -3,11 +3,13 @@ using UnityEngine.UIElements;
 
 namespace sugi.cc.ui
 {
-    class CustomFloatField: TextField
+    class CustomFloatField : TextField
     {
-        public new class UxmlFactory: UxmlFactory<CustomFloatField, UxmlTraits> { }
+        public new class UxmlFactory : UxmlFactory<CustomFloatField, UxmlTraits>
+        {
+        }
 
-        public new class UxmlTraits: TextField.UxmlTraits
+        public new class UxmlTraits : TextField.UxmlTraits
         {
             public override void Init(VisualElement ve, IUxmlAttributes bag, CreationContext cc)
             {
@@ -15,42 +17,63 @@ namespace sugi.cc.ui
             }
         }
     }
-    
-    class FloatField : ValueField<float>
+
+    class FloatField : TextField
     {
-        public FloatField(string label, float value)
+        public new class UxmlFactory : UxmlFactory<FloatField, UxmlTraits>
         {
-            var field = new TextField(label);
-            field.value = value.ToString();
-            field.isDelayed = true;
-            field.AddToClassList("value-field");
-            field.RegisterCallback<ChangeEvent<string>>((evt) =>
+        }
+
+        public new class UxmlTraits : TextField.UxmlTraits
+        {
+            public float value { get; set; }
+
+            public override void Init(VisualElement ve, IUxmlAttributes bag, CreationContext cc)
             {
-                var val = evt.newValue;
-                var field = (TextField) evt.target;
-                float.TryParse(val, out m_Value);
-                field.value = Value.ToString();
-            });
-            Element = field;
+                Debug.Log("float field init");
+                base.Init(ve, bag, cc);
+                var field = (TextField) ve;
+                field.isDelayed = true;
+                field.AddToClassList("value-field");
+                field.RegisterCallback<ChangeEvent<string>>((evt) =>
+                {
+                    var val = evt.newValue;
+                    var field = (TextField) evt.target;
+                    var newVal = value;
+                    if (float.TryParse(val, out newVal))
+                        value = newVal;
+                    field.value = value.ToString();
+                });
+            }
         }
     }
 
-    class  IntField: ValueField<int>
+    class IntField : TextField
     {
-        public IntField(string label, int value)
+        public new class UxmlFactory : UxmlFactory<IntField, UxmlTraits>
         {
-            var field = new TextField(label);
-            field.value = value.ToString();
-            field.isDelayed = true;
-            field.AddToClassList("int-field");
-            field.RegisterCallback<ChangeEvent<string>>((evt) =>
+        }
+
+        public new class UxmlTraits : TextField.UxmlTraits
+        {
+            public int value { get; set; }
+
+            public override void Init(VisualElement ve, IUxmlAttributes bag, CreationContext cc)
             {
-                var val = evt.newValue;
-                var field = (TextField) evt.target;
-                int.TryParse(val, out m_Value);
-                field.value = Value.ToString();
-            });
-            Element = field;
+                base.Init(ve, bag, cc);
+                var field = (TextField) ve;
+
+                field.AddToClassList("value-field");
+                field.RegisterCallback<ChangeEvent<string>>((evt) =>
+                {
+                    var val = evt.newValue;
+                    var field = (TextField) evt.target;
+                    var newVal = value;
+                    if (int.TryParse(val, out newVal))
+                        value = newVal;
+                    field.value = value.ToString();
+                });
+            }
         }
     }
 
