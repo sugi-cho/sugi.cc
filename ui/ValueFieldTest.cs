@@ -13,9 +13,9 @@ namespace sugi.cc.ui
             var root = uiDoc.rootVisualElement;
             var container = root.Q(null, targetClassName);
 
-            
-            container.Add(new FloatField{label = "float field", value = "0"});
-            container.Add(new Vector3Field("v3 field", Vector3.one));
+            var tf = new TextField();
+            container.Add(new FloatTextField{label = "float field", value = "0"});
+         //   container.Add(new Vector3Field("v3 field", Vector3.one));
         }
     }
 }

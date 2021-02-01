@@ -11,7 +11,9 @@
         <ui:VisualElement class="full-container" style="flex-direction: row-reverse;">
             <ui:VisualElement class="side-container">
                 <ui:ScrollView class="data-field-container">
-                    <sugi.cc.ui.FloatField label="float Val" />
+                    <sugi.cc.ui.FloatTextField label="test" value="34.56" text=" 34.56&#10;" />
+                    <sugi.cc.ui.IntTextField label="int" value="34" text="345&#10;" readonly="false" password="false" />
+                    <sugi.cc.ui.Vector3TextField label="vec344" x="3" y="2" z="4" />
                 </ui:ScrollView>
             </ui:VisualElement>
             <ui:VisualElement name="main-contents" class="full-container" style="background-image: url(&apos;/Assets/sugi.cc/_Resources/Textures/RenderTexture.renderTexture&apos;); -unity-background-scale-mode: scale-to-fit;">
