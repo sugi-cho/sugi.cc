@@ -1,6 +1,8 @@
+#if UNITY_INPUT_SYSTEM && ENABLE_INPUT_SYSTEM
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 
@@ -25,3 +27,4 @@ namespace sugi.cc.ui
         }
     }
 }
+#endif
