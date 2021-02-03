@@ -78,6 +78,11 @@ namespace sugi.cc.rendering
             }
         }
 
+        public RenderPassEvent passEvent;
+        public RenderTexture targetTexture;
+        public Material postProcessMat;
+
+
         CustomRenderPass m_ScriptablePass;
         public override void Create()
         {
@@ -88,13 +93,7 @@ namespace sugi.cc.rendering
         // This method is called when setting up the renderer once per-camera.
         public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
         {
-            var stack = VolumeManager.instance.stack;
-            var customProcesses = stack.GetComponent<CustomPostProcessing>();
-
-            if (customProcesses == null || !customProcesses.IsActive()) return;
-            var pass = customProcesses.renderPassSetting.value;
-
-            m_ScriptablePass.Setup(pass.passEvent, pass.targetTexture, pass.postProcessMat);
+            m_ScriptablePass.Setup(passEvent, targetTexture, postProcessMat);
             renderer.EnqueuePass(m_ScriptablePass);
         }
     }
