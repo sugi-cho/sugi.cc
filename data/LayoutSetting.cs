@@ -30,7 +30,7 @@ namespace sugi.cc.data
         [ContextMenu("load file")]
         void ContextMenuLoad()
         {
-            base.Load(filePath);
+            base.Load(FilePath);
         }
 
         [ContextMenu("save data")]

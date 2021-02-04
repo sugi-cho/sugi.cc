@@ -6,21 +6,18 @@ namespace sugi.cc.data
 {
     public abstract class LoadableSetting : ScriptableObject
     {
-        public string FilePath => filePath;
-        [SerializeField] protected string filePath;
+        public abstract string FilePath { get; }
         public abstract DataNameAndFilePath GetNameAndPath();
         public abstract void Load(string filePath);
         public abstract void Save();
-        protected void Save(string path, string json)
-        {
-            File.WriteAllText(path, json);
-        }
     }
 
     public abstract class LoadableSetting<T> : LoadableSetting
     {
+        public override string FilePath => filePath;
+        [SerializeField] private string filePath;
         public T Data => data;
-        [SerializeField] protected T data;
+        [SerializeField] T data;
 
         public override DataNameAndFilePath GetNameAndPath()
         {
@@ -39,7 +36,7 @@ namespace sugi.cc.data
 
         public override void Load(string filePath)
         {
-            base.filePath = filePath;
+            this.filePath = filePath;
             Load();
         }
 
@@ -71,8 +68,12 @@ namespace sugi.cc.data
         }
         public void Save(string path, T data) {
             this.data = data;
-            base.filePath = path;
+            this.filePath = path;
             Save();
+        }
+        private void Save(string path, string json)
+        {
+            File.WriteAllText(path, json);
         }
     }
 
