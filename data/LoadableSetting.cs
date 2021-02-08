@@ -29,7 +29,7 @@ namespace sugi.cc.data
         }
 
 
-        private void Reset()
+        protected virtual void Reset()
         {
             filePath = $"{typeof(T).Name}.json";
         }
