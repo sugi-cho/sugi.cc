@@ -6,6 +6,7 @@ namespace sugi.cc.data
 {
     public abstract class LoadableSetting : ScriptableObject
     {
+        [SerializeField] protected bool locked;
         public abstract string FilePath { get; }
         public abstract DataNameAndFilePath GetNameAndPath();
         public abstract void Load(string filePath);
@@ -42,6 +43,10 @@ namespace sugi.cc.data
 
         private void Load()
         {
+            if (locked) {
+                Debug.LogError($"setting of {name} is locked");
+                return;
+            }
             if (File.Exists(filePath))
             {
                 var json = File.ReadAllText(filePath);

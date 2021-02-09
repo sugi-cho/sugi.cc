@@ -1,8 +1,4 @@
 using UnityEngine;
-using System.IO;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 namespace sugi.cc.data
 {
@@ -38,24 +34,5 @@ namespace sugi.cc.data
         {
             base.Save();
         }
-
-#if UNITY_EDITOR
-        [MenuItem("Assets/Create/LoadableSetting/LayoutSetting")]
-        public static void Create()
-        {
-            var path = "Assets";
-            foreach (var obj in Selection.GetFiltered<Object>(SelectionMode.Assets))
-            {
-                var p = AssetDatabase.GetAssetPath(obj);
-                if (p != "")
-                    path = p;
-                if (!AssetDatabase.IsValidFolder(path))
-                    path = Path.GetDirectoryName(path);
-            }
-
-            ProjectWindowUtil.CreateAsset(CreateInstance<LayoutSetting>(),
-                AssetDatabase.GenerateUniqueAssetPath(Path.Combine(path, "LayoutSetting.asset")));
-        }
-#endif
     }
 }
