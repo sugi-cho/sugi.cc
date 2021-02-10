@@ -3,7 +3,7 @@ using UnityEngine.UIElements;
 
 namespace sugi.cc.ui
 {
-    [ExecuteInEditMode, RequireComponent(typeof(UIDocument), typeof(EventSystem))]
+    [ExecuteInEditMode, RequireComponent(typeof(UIDocument))]
     public class DraggableUI : MonoBehaviour
     {
         [SerializeField] private string draggableClassName = "draggable";
