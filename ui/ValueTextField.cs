@@ -74,7 +74,8 @@ namespace sugi.cc.ui
             Add(selectField);
 
             var selections = new VisualElement();
-            var button = new Button(() => { 
+            var button = new Button(() =>
+            {
                 enumValue = m_enumValue;
                 selections.style.display = DisplayStyle.None;
             });
