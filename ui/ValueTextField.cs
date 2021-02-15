@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using System;
+using System.Linq;
 
 namespace sugi.cc.ui
 {
@@ -34,6 +36,77 @@ namespace sugi.cc.ui
             {
                 base.Init(ve, bag, cc);
             }
+        }
+    }
+
+    class EnumButtonField : VisualElement
+    {
+        public string label;
+        public Enum enumValue
+        {
+            get => m_enumValue;
+            private set
+            {
+                m_enumValue = value;
+                if (OnValueChanged != null)
+                    OnValueChanged.Invoke(m_enumValue);
+            }
+        }
+        Enum m_enumValue;
+
+        public Action<Enum> OnValueChanged;
+
+        public EnumButtonField(string label, Enum defaultValue, Action<Enum> callback = null) : base()
+        {
+            if (callback != null)
+                OnValueChanged += callback;
+
+            enumValue = defaultValue;
+            var type = defaultValue.GetType();
+            var names = Enum.GetNames(type).ToList();
+
+            style.flexDirection = FlexDirection.Row;
+            var labelField = new Label(label);
+            labelField.style.flexGrow = 1;
+            Add(labelField);
+
+            var selectField = new VisualElement();
+            Add(selectField);
+
+            var selections = new VisualElement();
+            var button = new Button(() => { 
+                enumValue = m_enumValue;
+                selections.style.display = DisplayStyle.None;
+            });
+            button.text = enumValue.ToString();
+            button.style.flexGrow = 1;
+
+            selectField.Add(button);
+            selectField.Add(selections);
+
+            foreach (var name in names)
+            {
+                var item = new Label(name);
+                item.AddToClassList("unity-list-view__item");
+                item.RegisterCallback<ClickEvent>((evt) =>
+                {
+                    var l = (evt.target as Label);
+
+                    if (!l.ClassListContains("unity-list-view__item--selected"))
+                    {
+                        l.parent.Query(null, "unity-list-view__item--selected")
+                        .ForEach((selected) => selected.RemoveFromClassList("unity-list-view__item--selected"));
+                        l.AddToClassList("unity-list-view__item--selected");
+                        button.text = l.text;
+                        enumValue = (Enum)Enum.Parse(type, button.text);
+                    }
+                    selections.style.display = DisplayStyle.None;
+                });
+                selections.Add(item);
+            }
+
+            selections.style.display = DisplayStyle.None;
+            button.RegisterCallback<PointerEnterEvent>((evt) => selections.style.display = DisplayStyle.Flex);
         }
     }
 
