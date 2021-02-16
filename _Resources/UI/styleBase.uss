@@ -60,7 +60,7 @@
     margin-left: 3px;
     margin-right: 3px;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: stretch;
 }
 
@@ -82,7 +82,7 @@
     padding-bottom: 0;
 }
 
-.value-field .unity-label {
+.value-field > .unity-label {
     min-width: auto;
     flex-grow: 1;
     flex-shrink: 1;

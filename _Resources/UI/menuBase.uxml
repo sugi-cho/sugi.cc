@@ -15,7 +15,7 @@
                     <sugi.cc.ui.IntTextField label="int" value="34" text="345&#10;" readonly="false" password="false" />
                     <sugi.cc.ui.Vector3TextField label="vec344" x="3" y="2" z="4" />
                 </ui:ScrollView>
-                <ui:VisualElement name="EnumField" class="value-field" style="flex-direction: row; justify-content: space-between; align-items: stretch;">
+                <ui:VisualElement name="EnumField-view" class="value-field" style="flex-direction: row; justify-content: space-between; align-items: stretch;">
                     <ui:Label text="Label" display-tooltip-when-elided="true" style="-unity-text-align: middle-left;" />
                     <ui:VisualElement style="flex-grow: 1;">
                         <ui:Button text="Button" display-tooltip-when-elided="true" style="max-width: none; flex-grow: 1;" />
@@ -26,6 +26,7 @@
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
+                <ui:VisualElement name="EnumField" />
             </ui:VisualElement>
             <ui:VisualElement name="main-contents" class="full-container" style="background-image: url(&apos;/Assets/sugi.cc/_Resources/Textures/RenderTexture.renderTexture&apos;); -unity-background-scale-mode: scale-to-fit;">
                 <ui:VisualElement style="justify-content: center; align-items: center;">

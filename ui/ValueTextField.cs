@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace sugi.cc.ui
 {
-    class FloatTextField : ValueTextField<float>
+    public class FloatTextField : ValueTextField<float>
     {
         internal override bool TryParse(string s, out float result) => float.TryParse(s, out result);
 
@@ -22,7 +22,7 @@ namespace sugi.cc.ui
         }
     }
 
-    class IntTextField : ValueTextField<int>
+    public class IntTextField : ValueTextField<int>
     {
         internal override bool TryParse(string s, out int result) => int.TryParse(s, out result);
 
@@ -39,10 +39,10 @@ namespace sugi.cc.ui
         }
     }
 
-    class EnumButtonField : VisualElement
+    public class EnumButtonField<T> : VisualElement where T: Enum
     {
         public string label;
-        public Enum enumValue
+        public T enumValue
         {
             get => m_enumValue;
             private set
@@ -52,11 +52,11 @@ namespace sugi.cc.ui
                     OnValueChanged.Invoke(m_enumValue);
             }
         }
-        Enum m_enumValue;
+        T m_enumValue;
 
-        public Action<Enum> OnValueChanged;
+        public Action<T> OnValueChanged;
 
-        public EnumButtonField(string label, Enum defaultValue, Action<Enum> callback = null) : base()
+        public EnumButtonField(string label, T defaultValue, Action<T> callback = null) : base()
         {
             if (callback != null)
                 OnValueChanged += callback;
@@ -65,6 +65,7 @@ namespace sugi.cc.ui
             var type = defaultValue.GetType();
             var names = Enum.GetNames(type).ToList();
 
+            AddToClassList("value-field");
             style.flexDirection = FlexDirection.Row;
             var labelField = new Label(label);
             labelField.style.flexGrow = 1;
@@ -99,7 +100,7 @@ namespace sugi.cc.ui
                         .ForEach((selected) => selected.RemoveFromClassList("unity-list-view__item--selected"));
                         l.AddToClassList("unity-list-view__item--selected");
                         button.text = l.text;
-                        enumValue = (Enum)Enum.Parse(type, button.text);
+                        enumValue = (T)Enum.Parse(type, button.text);
                     }
                     selections.style.display = DisplayStyle.None;
                 });
@@ -111,7 +112,7 @@ namespace sugi.cc.ui
         }
     }
 
-    class Vector3TextField : VectorTextField<Vector3>
+    public class Vector3TextField : VectorTextField<Vector3>
     {
         protected override int subelementCount => 3;
 
@@ -152,7 +153,7 @@ namespace sugi.cc.ui
         }
     }
 
-    abstract class VectorTextField<T> : VisualElement
+    public abstract class VectorTextField<T> : VisualElement
     {
         public abstract void SetValue(T val);
         public T GetValue() => vectorValue;
@@ -204,7 +205,7 @@ namespace sugi.cc.ui
         }
     }
 
-    abstract class ValueTextField<T> : TextField
+    public abstract class ValueTextField<T> : TextField
     {
         public void SetValue(T value)
         {
