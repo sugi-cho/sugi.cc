@@ -55,6 +55,7 @@ namespace sugi.cc.ui
         T m_enumValue;
 
         public Action<T> OnValueChanged;
+        bool m_selecting;
 
         public EnumButtonField(string label, T defaultValue, Action<T> callback = null) : base()
         {
@@ -77,8 +78,17 @@ namespace sugi.cc.ui
             var selections = new VisualElement();
             var button = new Button(() =>
             {
-                enumValue = m_enumValue;
-                selections.style.display = DisplayStyle.None;
+                if (m_selecting)
+                {
+                    enumValue = m_enumValue;
+                    selections.style.display = DisplayStyle.None;
+                    m_selecting = false;
+                }
+                else
+                {
+                    selections.style.display = DisplayStyle.Flex;
+                    m_selecting = true;
+                }
             });
             button.text = enumValue.ToString();
             button.style.flexGrow = 1;
@@ -103,12 +113,12 @@ namespace sugi.cc.ui
                         enumValue = (T)Enum.Parse(type, button.text);
                     }
                     selections.style.display = DisplayStyle.None;
+                    m_selecting = false;
                 });
                 selections.Add(item);
             }
 
             selections.style.display = DisplayStyle.None;
-            button.RegisterCallback<PointerEnterEvent>((evt) => selections.style.display = DisplayStyle.Flex);
         }
     }
 
