@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UIElements;
@@ -22,7 +20,7 @@ namespace sugi.cc.editor
         {
             var root = rootVisualElement;
 
-            var objectField = new ObjectField("Script");
+            var objectField = new ObjectField("Script(ScriptableObject)");
             objectField.objectType = typeof(MonoScript);
             objectField.RegisterValueChangedCallback((val) =>
             {
