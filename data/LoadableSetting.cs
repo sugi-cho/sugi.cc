@@ -18,6 +18,7 @@ namespace sugi.cc.data
         public override string FilePath => filePath;
         [SerializeField] private string filePath;
         public T Data => data;
+        public void SetData(T val) => data = val;
         [SerializeField] T data;
 
         public override DataNameAndFilePath GetNameAndPath()
@@ -28,7 +29,6 @@ namespace sugi.cc.data
                 filePath = filePath
             };
         }
-
 
         protected virtual void Reset()
         {
