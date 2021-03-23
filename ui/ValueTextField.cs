@@ -76,6 +76,10 @@ namespace sugi.cc.ui
             Add(selectField);
 
             var selections = new VisualElement();
+            selections.style.display = DisplayStyle.None;
+            //selections.style.position = Position.Absolute;
+            selections.style.backgroundColor = new StyleColor(Color.white);
+
             var button = new Button(() =>
             {
                 if (m_selecting)
@@ -94,7 +98,9 @@ namespace sugi.cc.ui
             button.style.flexGrow = 1;
 
             selectField.Add(button);
-            selectField.Add(selections);
+            var container = new VisualElement();
+            container.Add(selections);
+            selectField.Add(container);
 
             foreach (var name in names)
             {
@@ -118,7 +124,6 @@ namespace sugi.cc.ui
                 selections.Add(item);
             }
 
-            selections.style.display = DisplayStyle.None;
         }
     }
 
