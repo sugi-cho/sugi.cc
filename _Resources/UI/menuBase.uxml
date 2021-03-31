@@ -27,8 +27,9 @@
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement name="EnumField" />
+                <ui:DropdownField label="Dropdown" choices="item1,item2,item3" />
             </ui:VisualElement>
-            <ui:VisualElement name="main-contents" class="full-container" style="background-image: url(&apos;/Assets/sugi.cc/_Resources/Textures/RenderTexture.renderTexture&apos;); -unity-background-scale-mode: scale-to-fit;">
+            <ui:VisualElement name="main-contents" class="full-container" style="background-image: url(&apos;/Packages/sugi.cc/_Resources/Textures/RenderTexture.renderTexture&apos;); -unity-background-scale-mode: scale-to-fit;">
                 <ui:VisualElement style="justify-content: center; align-items: center;">
                     <ui:Label text="this is test text" display-tooltip-when-elided="true" style="align-items: auto; flex-grow: 0; visibility: visible; -unity-text-align: upper-center;" />
                 </ui:VisualElement>

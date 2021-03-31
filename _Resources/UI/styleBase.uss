@@ -147,3 +147,7 @@
     align-items: stretch;
     flex-direction: column;
 }
+
+.unity-base-dropdown {
+    position: absolute;
+}
