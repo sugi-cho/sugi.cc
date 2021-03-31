@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if URP
+using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
@@ -100,3 +101,4 @@ namespace sugi.cc.rendering
 }
 
 
+#endif
