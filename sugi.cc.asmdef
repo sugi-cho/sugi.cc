@@ -25,6 +25,11 @@
             "name": "com.unity.ui",
             "expression": "",
             "define": "UIE_PACKAGE"
+        },
+        {
+            "name": "com.unity.modules.uielements",
+            "expression": "",
+            "define": "UIE_PACKAGE"
         }
     ],
     "noEngineReferences": false
